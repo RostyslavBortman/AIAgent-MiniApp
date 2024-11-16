@@ -1,29 +1,29 @@
 import { Palette } from '@mui/material';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
-import { inter, ppMori } from './fonts';
+import { inter, dmSans } from './fonts';
 
 export const variants: TypographyOptions = {
   h1: {
-    font: ppMori.style.fontFamily,
+    font: dmSans.style.fontFamily,
     fontSize: 58,
     fontWeight: 600,
     lineHeight: '69.6px',
   },
   h2: {
-    font: ppMori.style.fontFamily,
+    font: dmSans.style.fontFamily,
     fontSize: 49,
     fontWeight: 600,
     lineHeight: '58.8px',
   },
   h3: {
-    font: ppMori.style.fontFamily,
+    font: dmSans.style.fontFamily,
     fontSize: 40,
     fontWeight: 600,
     lineHeight: '48px',
   },
   h4: {
-    font: ppMori.style.fontFamily,
+    font: dmSans.style.fontFamily,
     fontSize: 30,
     fontWeight: 600,
     lineHeight: '42px',

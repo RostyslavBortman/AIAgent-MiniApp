@@ -1,7 +1,8 @@
 'use client';
 
-import Flex from '@/components/ui-kit/flex';
 import { PropsWithChildren } from 'react';
+
+import Flex from '@/components/ui-kit/flex';
 
 //main className="flex min-h-screen flex-col items-center justify-center p-24 gap-y-3"
 export const Layout = ({ children }: PropsWithChildren) => {

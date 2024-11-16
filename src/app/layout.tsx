@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import MiniKitProvider from '@/components/minikit-provider';
-import dynamic from 'next/dynamic';
-import NextAuthProvider from '@/components/next-auth-provider';
-import { ThemeProvider } from '@/theme/ThemeProvider';
+
 import { Layout } from '@/layout';
+
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,25 +14,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const ErudaProvider = dynamic(
-    () => import('../components/Eruda').then((c) => c.ErudaProvider),
-    {
-      ssr: false,
-    }
-  );
   return (
     <html lang="en">
-      <NextAuthProvider>
-        <ErudaProvider>
-          <MiniKitProvider>
-            <body>
-              <ThemeProvider>
-                <Layout>{children}</Layout>
-              </ThemeProvider>
-            </body>
-          </MiniKitProvider>
-        </ErudaProvider>
-      </NextAuthProvider>
+      <body>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
+      </body>
     </html>
   );
 }

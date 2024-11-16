@@ -3,7 +3,7 @@
 import dynamic from 'next/dynamic';
 import { ReactNode } from 'react';
 
-const Eruda = dynamic(() => import('./eruda-provider').then((c) => c.Eruda), {
+const Eruda = dynamic(() => import('./eruda-provider').then(c => c.Eruda), {
   ssr: false,
 });
 

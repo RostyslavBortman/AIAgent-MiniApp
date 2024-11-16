@@ -8,7 +8,6 @@ import {
 
 import palette from '../palette';
 import getDefaultTransitionProps from '../utils/getDefaultTransitionProps';
-import { getScrollbarStyles } from '../utils/getScrollbarStyles';
 
 export const inputOverrides: Required<
   Pick<
@@ -28,7 +27,7 @@ export const inputOverrides: Required<
       root: {
         height: '24px',
         marginTop: '0px !important',
-        color: palette.text.primary,
+        color: palette.text.placeholder,
       },
     },
   },
@@ -47,7 +46,7 @@ export const inputOverrides: Required<
       input: {
         padding: '8px 12px',
         paddingLeft: '0px',
-        color: palette.gray[900],
+        color: palette.text.primary,
 
         [`&.${inputClasses.disabled}`]: {
           cursor: 'not-allowed',
@@ -55,32 +54,31 @@ export const inputOverrides: Required<
 
         '&::placeholder': {
           opacity: 1,
-          color: palette.gray[600],
+          color: palette.text.placeholder,
         },
       },
       root: {
-        height: '44px',
+        height: '38px',
         position: 'relative',
-        borderRadius: '24px',
-        border: '2px solid',
-        borderColor: palette.background.secondary,
+        border: '1px solid',
+        borderRadius: '0px !important',
+        borderColor: palette.gray[300],
         background: `${palette.background.secondary} !important`,
 
         [`&.${inputClasses.focused}`]: {
-          borderColor: palette.blue[600],
-          outline: `4px solid ${palette.blue[200]}`,
+          borderColor: palette.backdrop.main,
 
           [`& .${inputAdornmentClasses.root}`]: {
-            color: palette.blue[800],
+            color: palette.text.primary,
           },
         },
 
         '&:hover': {
-          background: palette.blue[25],
-          borderColor: palette.blue[600],
+          background: `${palette.background.secondary} !important`,
+          borderColor: palette.backdrop.main,
 
           [`& .${inputAdornmentClasses.root}`]: {
-            color: palette.blue[800],
+            color: palette.text.primary,
           },
         },
 
@@ -96,6 +94,7 @@ export const inputOverrides: Required<
   MuiOutlinedInput: {
     styleOverrides: {
       input: {
+        height: '10px',
         paddingRight: '10px',
 
         [`&.${inputClasses.disabled}`]: {
@@ -104,35 +103,30 @@ export const inputOverrides: Required<
 
         '&::placeholder': {
           opacity: 1,
-          color: palette.lavenderGray[600],
-          fontSize: '16px',
+          color: palette.gray[100],
         },
 
-        ...getScrollbarStyles(),
+        ':-webkit-autofill': {
+          background: 'unset !important',
+        },
       },
 
       root: {
-        borderRadius: '8px',
+        borderRadius: '0px !important',
         border: '1px solid',
-        borderColor: palette.blue[50],
-        color: palette.lavenderGray[900],
+        borderColor: palette.gray[300],
+        color: palette.text.tertiary,
 
         [`&.${inputClasses.focused}`]: {
-          backgroundColor: palette.blue[25],
-          borderColor: palette.blue[600],
-          outline: `2px solid ${palette.blue[200]}`,
-
-          [`& .${inputAdornmentClasses.root}`]: {
-            color: palette.blue[800],
-          },
+          borderColor: palette.gray[900],
+          color: palette.text.tertiary,
         },
 
         '&:hover': {
-          backgroundColor: palette.blue[25],
-          borderColor: palette.blue[600],
+          borderColor: palette.gray[900],
 
           [`& .${inputAdornmentClasses.root}`]: {
-            color: palette.blue[800],
+            color: palette.gray[100],
           },
         },
 

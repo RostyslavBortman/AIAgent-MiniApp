@@ -13,7 +13,7 @@ export const popoverOverrides: Required<Pick<Components, 'MuiPopover'>> = {
 
         padding: '8px !important',
 
-        border: `1px solid ${palette.lavenderGray[100]}`,
+        border: `1px solid ${palette.gray[100]}`,
         borderRadius: 16,
         boxShadow: '4px 5px 25.4px 0px #615D7026',
       },

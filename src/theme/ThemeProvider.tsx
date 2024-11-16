@@ -1,10 +1,6 @@
 'use client';
 
-import {
-  ThemeProvider as MuiThemeProvider,
-  CssBaseline,
-  createTheme,
-} from '@mui/material';
+import { ThemeProvider as MuiThemeProvider, CssBaseline, createTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { PropsWithChildren, FC } from 'react';
 

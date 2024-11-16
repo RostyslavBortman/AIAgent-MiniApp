@@ -1,5 +1,4 @@
-import { Inter } from 'next/font/google';
-import localFont from 'next/font/local';
+import { DM_Sans, Inter } from 'next/font/google';
 
 export const inter = Inter({
   weight: ['400', '500', '700'],
@@ -7,17 +6,8 @@ export const inter = Inter({
   display: 'swap',
 });
 
-export const ppMori = localFont({
-  src: [
-    {
-      path: '../../../public/fonts/pp-mori/PPMori-Regular.otf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../../../public/fonts/pp-mori/PPMori-SemiBold.otf',
-      weight: '600',
-      style: 'normal',
-    },
-  ],
+export const dmSans = DM_Sans({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
 });

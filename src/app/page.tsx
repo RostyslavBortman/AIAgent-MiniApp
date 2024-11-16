@@ -1,12 +1,14 @@
 'use client';
 
-import { PayBlock } from '@/components/Pay';
-import { SignIn } from '@/components/SignIn';
+import SignOut from '@/components/sign-out';
+import { withAuth } from '@/hocs/with-auth';
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <SignIn />
+      <SignOut />
     </>
   );
-}
+};
+
+export default withAuth(Home);

@@ -1,24 +1,24 @@
 import { Components, buttonClasses } from '@mui/material';
 
 import palette from '../palette';
+import { dmSans } from '../typography/fonts';
 
-const BUTTON_RADIUS = '99px';
+const BUTTON_RADIUS = '12px';
 const getFontStyles = () => ({
-  fontSize: 16,
-  fontWeight: 500,
+  fontSize: 14,
+  fontWeight: 700,
+  fontFamily: dmSans.style.fontFamily,
 });
-
 const getSize = () => ({
-  width: '204px',
-  padding: '5px 36px',
+  padding: '14px 20px',
 });
 
 export const getOutlinedButtonHoverStyles = () => ({
-  background: palette.blue[100],
-  borderColor: palette.blue[900],
+  background: palette.gray[100],
+  borderColor: palette.gray[200],
 });
 
-export const buttonOverrides: Required<Pick<Components, 'MuiButton' | 'MuiIconButton'>> = {
+export const buttonOverrides: Required<Pick<Components, 'MuiButton'>> = {
   MuiButton: {
     defaultProps: {
       disableRipple: true,
@@ -26,6 +26,9 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton' | 'MuiIconBu
     styleOverrides: {
       root: {
         ...getFontStyles(),
+        textTransform: 'none',
+        letterSpacing: '-0.33px',
+        lineHeight: '22px',
         boxShadow: 'none',
 
         [`&.${buttonClasses.disabled}`]: {
@@ -42,38 +45,18 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton' | 'MuiIconBu
           variant: 'contained',
         },
         style: {
-          background: palette.blue[800],
+          background: palette.gray[900],
           borderRadius: BUTTON_RADIUS,
-          textTransform: 'none',
+          border: `2px solid ${palette.gray[900]}`,
 
           '&:hover': {
-            background: palette.blue[900],
+            background: palette.gray[600],
+            borderColor: palette.gray[600],
           },
 
           [`&.${buttonClasses.disabled}`]: {
-            background: palette.lavenderGray[300],
-          },
-        },
-      },
-      {
-        props: {
-          variant: 'outlined',
-        },
-        style: {
-          background: palette.background.secondary,
-          borderRadius: BUTTON_RADIUS,
-          textTransform: 'none',
-          borderWidth: '2px !important',
-          borderColor: palette.blue[800],
-          color: palette.blue[800],
-
-          '&:hover': {
-            ...getOutlinedButtonHoverStyles(),
-          },
-
-          [`&.${buttonClasses.disabled}`]: {
-            background: palette.lavenderGray[200],
-            borderColor: palette.gray[400],
+            borderColor: palette.gray[300],
+            background: palette.gray[200],
           },
         },
       },
@@ -97,7 +80,7 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton' | 'MuiIconBu
           size: 'medium',
           variant: 'contained',
         },
-        style: { ...getSize(), height: '42px' },
+        style: getSize(),
       },
       {
         props: {
@@ -106,39 +89,6 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton' | 'MuiIconBu
         },
         style: getSize(),
       },
-      {
-        props: {
-          size: 'small',
-          variant: 'outlined',
-        },
-        style: {
-          padding: '4px 22px',
-          fontSize: '13px',
-          lineHeight: '17px',
-          fontWeight: 400,
-        },
-      },
-      {
-        props: {
-          size: 'small',
-          variant: 'contained',
-        },
-        style: { ...getSize(), height: '36px' },
-      },
     ],
-  },
-
-  MuiIconButton: {
-    styleOverrides: {
-      root: {
-        padding: '8px',
-        backgroundColor: palette.blue[25],
-        color: palette.blue[800],
-
-        ':hover': {
-          backgroundColor: palette.blue[50],
-        },
-      },
-    },
   },
 };

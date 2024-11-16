@@ -36,42 +36,7 @@ export interface PaletteOptions extends MuiPaletteOptions {
     black: string;
     white: string;
   };
-  blue: {
-    25: string;
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-  };
-  lavenderGray: {
-    100: string;
-    200: string;
-    300: string;
-    600: string;
-    900: string;
-  };
-  gray: {
-    200: string;
-    400: string;
-    600: string;
-    900: string;
-  };
-  red: {
-    100: string;
-  };
-  orange: {
-    100: string;
-    500: string;
-  };
-  green: {
-    100: string;
-  };
+  gray: { 100: string; 200: string; 300: string; 400: string; 600: string; 900: string };
 
   // SEMANTIC
   background: {
@@ -81,9 +46,11 @@ export interface PaletteOptions extends MuiPaletteOptions {
   text: {
     primary: string;
     secondary: string;
+    tertiary: string;
     subtitle: string;
     body: string;
     hover: string;
+    placeholder: string;
     disabled: string;
   };
   error: {
@@ -95,6 +62,7 @@ export interface PaletteOptions extends MuiPaletteOptions {
   backdrop: {
     main: string;
   };
+  divider: string;
 }
 
 export interface Breakpoints {
