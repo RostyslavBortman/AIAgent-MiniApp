@@ -46,7 +46,6 @@ export interface PaletteOptions extends MuiPaletteOptions {
   text: {
     primary: string;
     secondary: string;
-    tertiary: string;
     subtitle: string;
     body: string;
     hover: string;

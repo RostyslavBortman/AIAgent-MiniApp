@@ -28,5 +28,5 @@
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-  "cSpell.words": []
+  "cSpell.words": ["UNIF"]
 }

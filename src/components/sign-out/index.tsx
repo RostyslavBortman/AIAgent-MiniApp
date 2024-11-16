@@ -1,15 +1,20 @@
 import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
-import { signOut, useSession } from 'next-auth/react';
 import { Typography } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 import Button from '../ui-kit/button';
 import { getUserInfo } from '@/utils/wallet.utils';
+import useAuth from '@/hooks/auth/useAuth';
 
 const SignOut = () => {
-  const { data: session } = useSession();
-  const { user, handleLogOut } = useDynamicContext();
+  const { user } = useDynamicContext();
+  const { onLogout } = useAuth();
 
-  if (session) {
+  const handleLogout = () => {
+    onLogout();
+  };
+
+  if (false) {
     return (
       <>
         <Typography> World Id: </Typography>
@@ -18,13 +23,10 @@ const SignOut = () => {
           borderRadius="12px"
           padding="12px 20px"
           bgcolor="gray.900"
-          color="text.secondary"
+          color="text.primary"
         >
-          {session?.user?.name?.slice(0, 10)}
+          {getUserInfo(user)}
         </Typography>
-        <Button variant="contained" onClick={() => signOut()}>
-          Log Out
-        </Button>
       </>
     );
   }
@@ -32,24 +34,30 @@ const SignOut = () => {
   if (user) {
     return (
       <>
-        <Typography>Dynamic Account: </Typography>
+        <Typography mt="auto" color="text.secondary">
+          Dynamic Account:{' '}
+        </Typography>
         <Typography
           variant="body3"
           borderRadius="12px"
           padding="12px 20px"
           bgcolor="gray.900"
-          color="text.secondary"
+          color="text.primary"
         >
           {getUserInfo(user)}
         </Typography>
-        <Button variant="contained" onClick={handleLogOut} sx={{ mt: 2 }}>
-          Log Out
+        <Button variant="contained" onClick={handleLogout} fullWidth sx={{ mt: 2 }}>
+          <LogoutIcon /> Log Out
         </Button>
       </>
     );
   }
 
-  return null;
+  return (
+    <Button variant="contained" onClick={handleLogout} fullWidth sx={{ mt: 'auto', mb: 5 }}>
+      <LogoutIcon /> Log Out
+    </Button>
+  );
 };
 
 export default SignOut;

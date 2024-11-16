@@ -1,12 +1,14 @@
 'use client';
 
-import SignOut from '@/components/sign-out';
 import { withAuth } from '@/hocs/with-auth';
+import AgentInput from '@/components/agent-input';
+import AgentHistory from '@/components/agent-history';
 
 const Home = () => {
   return (
     <>
-      <SignOut />
+      <AgentHistory />
+      <AgentInput />
     </>
   );
 };

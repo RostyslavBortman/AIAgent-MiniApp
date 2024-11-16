@@ -25,6 +25,7 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton'>> = {
     },
     styleOverrides: {
       root: {
+        maxWidth: '240px',
         ...getFontStyles(),
         textTransform: 'none',
         letterSpacing: '-0.33px',
@@ -55,8 +56,8 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton'>> = {
           },
 
           [`&.${buttonClasses.disabled}`]: {
-            borderColor: palette.gray[300],
-            background: palette.gray[200],
+            borderColor: palette.gray[400],
+            background: palette.gray[400],
           },
         },
       },

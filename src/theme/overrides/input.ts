@@ -1,23 +1,10 @@
-import {
-  Components,
-  formLabelClasses,
-  inputAdornmentClasses,
-  inputBaseClasses,
-  inputClasses,
-} from '@mui/material';
+import { Components, formLabelClasses, inputAdornmentClasses, inputClasses } from '@mui/material';
 
 import palette from '../palette';
 import getDefaultTransitionProps from '../utils/getDefaultTransitionProps';
 
 export const inputOverrides: Required<
-  Pick<
-    Components,
-    | 'MuiInputAdornment'
-    | 'MuiFilledInput'
-    | 'MuiOutlinedInput'
-    | 'MuiFormHelperText'
-    | 'MuiFormLabel'
-  >
+  Pick<Components, 'MuiInputAdornment' | 'MuiFilledInput' | 'MuiFormHelperText' | 'MuiFormLabel'>
 > = {
   MuiInputAdornment: {
     defaultProps: {
@@ -89,76 +76,6 @@ export const inputOverrides: Required<
         ...getDefaultTransitionProps(),
       },
     },
-  },
-
-  MuiOutlinedInput: {
-    styleOverrides: {
-      input: {
-        height: '10px',
-        paddingRight: '10px',
-
-        [`&.${inputClasses.disabled}`]: {
-          cursor: 'not-allowed',
-        },
-
-        '&::placeholder': {
-          opacity: 1,
-          color: palette.gray[100],
-        },
-
-        ':-webkit-autofill': {
-          background: 'unset !important',
-        },
-      },
-
-      root: {
-        borderRadius: '0px !important',
-        border: '1px solid',
-        borderColor: palette.gray[300],
-        color: palette.text.tertiary,
-
-        [`&.${inputClasses.focused}`]: {
-          borderColor: palette.gray[900],
-          color: palette.text.tertiary,
-        },
-
-        '&:hover': {
-          borderColor: palette.gray[900],
-
-          [`& .${inputAdornmentClasses.root}`]: {
-            color: palette.gray[100],
-          },
-        },
-
-        [`&.${inputClasses.error}`]: {
-          borderColor: palette.error.main,
-        },
-
-        fieldset: {
-          border: 'none',
-        },
-
-        ...getDefaultTransitionProps(),
-      },
-    },
-    variants: [
-      {
-        props: { size: 'medium' },
-        style: {
-          padding: '8px 10px',
-        },
-      },
-      {
-        props: { size: 'small' },
-        style: {
-          padding: '2px 0px',
-
-          [`& .${inputBaseClasses.input}`]: {
-            padding: '5.5px 10px',
-          },
-        },
-      },
-    ],
   },
 
   MuiFormLabel: {

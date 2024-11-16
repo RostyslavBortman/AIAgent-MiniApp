@@ -1,9 +1,10 @@
 import { ComponentType } from 'react';
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
 import { Typography } from '@mui/material';
+import Image from 'next/image';
 
 import { SignIn } from '@/components/sign-in';
-import { getUserInfo } from '@/utils/wallet.utils';
+import useAuth from '@/hooks/auth/useAuth';
+import Loader from '@/components/ui-kit/loader';
 
 interface IndexPageParams {
   params: { id: string };
@@ -11,17 +12,30 @@ interface IndexPageParams {
 
 export function withAuth(Component: ComponentType<IndexPageParams>) {
   return function WithAuth(props: IndexPageParams) {
-    const { user } = useDynamicContext();
+    const { isAuthorized, isDynamicLoading, isWorldLoading, isAuthLoading } = useAuth();
 
-    const isAuthorized = Boolean(getUserInfo(user));
+    if (isAuthLoading) {
+      return <Loader />;
+    }
 
     if (!isAuthorized) {
       return (
         <>
-          <Typography variant="h1" mb={10}>
-            UNiF AI
+          <Image
+            src="/static/logo.jpg"
+            width={250}
+            height={250}
+            alt="Image logo"
+            style={{ margin: '50px 0px', borderRadius: '50%' }}
+            priority
+          />
+          <Typography variant="h1" color="text.secondary" mt="auto">
+            UNIF AI
           </Typography>
-          <SignIn />
+          <Typography variant="subtitle2" mt={0.5} mb={16} color="text.secondary">
+            WEB3 AI Agent
+          </Typography>
+          <SignIn isDynamicLoading={isDynamicLoading} isWorldLoading={isWorldLoading} />
         </>
       );
     }

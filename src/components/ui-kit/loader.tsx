@@ -10,7 +10,7 @@ type Props = {
 } & CircularProgressProps;
 
 const Loader = ({ scrollRef, size = 41, isDisabled, ...props }: Props) => {
-  const color = isDisabled ? palette.gray[400] : palette.text.tertiary;
+  const color = isDisabled ? palette.gray[400] : palette.gray[900];
 
   return (
     <Animation width={size} height={size} mx="auto" ref={scrollRef} {...props}>

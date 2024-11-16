@@ -10,6 +10,7 @@ import { typographyOverrides } from './typography';
 import { popoverOverrides } from './popover';
 import { skeletonOverrides } from './skeleton';
 import { cssBaselineOverrides } from './css-baseline';
+import { linkOverrides } from './link';
 
 export const overrides: ThemeOptions['components'] = {
   ...cssBaselineOverrides,
@@ -22,4 +23,5 @@ export const overrides: ThemeOptions['components'] = {
   ...typographyOverrides,
   ...popoverOverrides,
   ...skeletonOverrides,
+  ...linkOverrides,
 };
