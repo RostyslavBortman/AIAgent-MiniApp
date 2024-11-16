@@ -1,29 +1,29 @@
 import { Palette } from '@mui/material';
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
-import { inter, dmSans } from './fonts';
+import { inter, dmSans, goldman } from './fonts';
 
 export const variants: TypographyOptions = {
   h1: {
-    font: dmSans.style.fontFamily,
+    fontFamily: goldman.style.fontFamily,
     fontSize: 58,
-    fontWeight: 600,
+    fontWeight: 500,
     lineHeight: '69.6px',
   },
   h2: {
-    font: dmSans.style.fontFamily,
+    fontFamily: dmSans.style.fontFamily,
     fontSize: 49,
     fontWeight: 600,
     lineHeight: '58.8px',
   },
   h3: {
-    font: dmSans.style.fontFamily,
+    fontFamily: dmSans.style.fontFamily,
     fontSize: 40,
     fontWeight: 600,
     lineHeight: '48px',
   },
   h4: {
-    font: dmSans.style.fontFamily,
+    fontFamily: dmSans.style.fontFamily,
     fontSize: 30,
     fontWeight: 600,
     lineHeight: '42px',
@@ -38,11 +38,6 @@ export const variants: TypographyOptions = {
   body3: {
     fontWeight: 700,
     lineHeight: '22.4px',
-  },
-  headline: {
-    fontSize: 25,
-    fontWeight: 700,
-    lineHeight: '35px',
   },
   subtitle1: {
     fontSize: 18,
@@ -60,11 +55,6 @@ export const variants: TypographyOptions = {
   caption2: {
     fontSize: '13px',
     fontWeight: 600,
-    lineHeight: '16.9px',
-  },
-  caption3: {
-    fontSize: '13px',
-    fontWeight: 700,
     lineHeight: '16.9px',
   },
 };

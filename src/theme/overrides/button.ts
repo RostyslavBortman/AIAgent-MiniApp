@@ -46,9 +46,29 @@ export const buttonOverrides: Required<Pick<Components, 'MuiButton'>> = {
           variant: 'contained',
         },
         style: {
-          background: palette.gray[900],
+          background: palette.background.secondary,
           borderRadius: BUTTON_RADIUS,
-          border: `2px solid ${palette.gray[900]}`,
+          border: `2px solid ${palette.background.secondary}`,
+
+          '&:hover': {
+            background: palette.gray[600],
+            borderColor: palette.gray[600],
+          },
+
+          [`&.${buttonClasses.disabled}`]: {
+            borderColor: palette.gray[400],
+            background: palette.gray[400],
+          },
+        },
+      },
+      {
+        props: {
+          variant: 'outlined',
+        },
+        style: {
+          borderRadius: BUTTON_RADIUS,
+          color: palette.text.secondary,
+          border: `2px solid ${palette.background.secondary}`,
 
           '&:hover': {
             background: palette.gray[600],

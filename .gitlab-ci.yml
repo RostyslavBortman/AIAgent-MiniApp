@@ -1,0 +1,42 @@
+include:
+  - project: sre/iss-templates/pipeline-templates
+    ref: main
+    file:
+      - Updated-templates-v2/deploy-helm-with-specific-values.yml
+
+
+variables:
+   KUBERNETES_EPHEMERAL_STORAGE_REQUEST: "1Gi"
+   KUBERNETES_EPHEMERAL_STORAGE_LIMIT: "5Gi"
+   
+stages:
+  - prepare
+  - create_env_file
+  - build
+  - deploy
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_REF_NAME ==  "main"
+      variables:
+        ENVIRONMENT_NAME: development
+        AWS_DEFAULT_REGION: eu-central-1
+        CI_REGISTRY_IMAGE: 335258918943.dkr.ecr.eu-central-1.amazonaws.com/hackaton-world-mini-app
+        DEPLOY_ENVIRONMENT: development
+        DEPLOYMENT_NAME: hackathon-world-mini-app
+        NAMESPACE: hackathon-dev
+        TAG_IMAGE: develop
+        ISTIO_URL: world-mini-app.unifai.org
+        TARGET_BRANCH: main
+        DEVOPS_AGENT: hackathon/kubernetes-agent:hackathon
+        VALUES_FILE: helm-values.yaml
+
+create_env_file_dev:
+  stage: create_env_file
+  script:
+    - echo "$KEY" >> .env
+  artifacts:
+    paths:
+      - .env
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"' 

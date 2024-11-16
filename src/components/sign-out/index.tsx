@@ -1,62 +1,62 @@
-import { useDynamicContext } from '@dynamic-labs/sdk-react-core';
-import { Typography } from '@mui/material';
+import { IconButton } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useState } from 'react';
 
-import Button from '../ui-kit/button';
-import { getUserInfo } from '@/utils/wallet.utils';
 import useAuth from '@/hooks/auth/useAuth';
+import { BaseDialog } from '../dialogs/base';
+import Button from '../ui-kit/button';
 
 const SignOut = () => {
-  const { user } = useDynamicContext();
   const { onLogout } = useAuth();
 
   const handleLogout = () => {
     onLogout();
+    onToggle();
   };
 
-  if (false) {
-    return (
-      <>
-        <Typography> World Id: </Typography>
-        <Typography
-          variant="body3"
-          borderRadius="12px"
-          padding="12px 20px"
-          bgcolor="gray.900"
-          color="text.primary"
-        >
-          {getUserInfo(user)}
-        </Typography>
-      </>
-    );
-  }
+  const [isOpened, setIsOpened] = useState(false);
 
-  if (user) {
-    return (
-      <>
-        <Typography mt="auto" color="text.secondary">
-          Dynamic Account:{' '}
-        </Typography>
-        <Typography
-          variant="body3"
-          borderRadius="12px"
-          padding="12px 20px"
-          bgcolor="gray.900"
-          color="text.primary"
-        >
-          {getUserInfo(user)}
-        </Typography>
-        <Button variant="contained" onClick={handleLogout} fullWidth sx={{ mt: 2 }}>
-          <LogoutIcon /> Log Out
-        </Button>
-      </>
-    );
-  }
+  const onToggle = () => {
+    setIsOpened(!isOpened);
+  };
 
   return (
-    <Button variant="contained" onClick={handleLogout} fullWidth sx={{ mt: 'auto', mb: 5 }}>
-      <LogoutIcon /> Log Out
-    </Button>
+    <>
+      <IconButton
+        onClick={onToggle}
+        sx={{
+          '&:hover': {
+            bgcolor: 'background.default',
+          },
+        }}
+      >
+        <LogoutIcon
+          sx={{
+            padding: 2,
+            borderRadius: '50%',
+            color: 'text.secondary',
+            bgcolor: 'background.default',
+            fontSize: 50,
+          }}
+        />
+      </IconButton>
+
+      <BaseDialog
+        open={isOpened}
+        onClose={onToggle}
+        header="Are you sure?"
+        actions={
+          <>
+            <Button variant="outlined" sx={{ height: '56px' }} onClick={onToggle}>
+              Cancel
+            </Button>
+            <Button variant="contained" onClick={handleLogout}>
+              <LogoutIcon /> Log Out
+            </Button>
+          </>
+        }
+      ></BaseDialog>
+    </>
   );
 };
 

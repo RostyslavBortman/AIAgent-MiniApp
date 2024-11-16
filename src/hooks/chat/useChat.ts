@@ -9,6 +9,7 @@ type UseChatReturnType = {
   data: null | IMessage[];
   sendMessage: (content: string) => void;
   isLoading: boolean;
+  isMessageSending: boolean;
 };
 
 const useChat = (): UseChatReturnType => {
@@ -39,15 +40,24 @@ const useChat = (): UseChatReturnType => {
   const sendMessage = useMutation({
     mutationKey: ['sendMessage'],
     mutationFn: async (content: string) => {
-      const accessTokens = await getAccessTokens();
-      if (!accessTokens) return onLogout();
+      try {
+        const accessTokens = await getAccessTokens();
+        if (!accessTokens) return onLogout();
 
-      await chatService.sendMessage(content, accessTokens);
-      refetch();
+        await chatService.sendMessage(content, accessTokens);
+        await refetch();
+      } catch (e) {
+        console.error(e);
+      }
     },
   });
 
-  return { data: data ?? null, sendMessage: sendMessage.mutateAsync, isLoading: isLoading };
+  return {
+    data: data ?? null,
+    sendMessage: sendMessage.mutateAsync,
+    isLoading: isLoading,
+    isMessageSending: sendMessage.isPending,
+  };
 };
 
 export default useChat;

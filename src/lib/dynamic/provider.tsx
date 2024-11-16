@@ -15,7 +15,7 @@ const DynamicContextProvider = ({ children }: PropsWithChildren) => {
       settings={{
         shadowDOMEnabled: false,
         environmentId: DYNAMIC_ENVIRONMENT_ID,
-        appName: 'UNIF AI',
+        appName: 'UNIFAI',
         walletConnectors: [EthereumWalletConnectors],
       }}
     >

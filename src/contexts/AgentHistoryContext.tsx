@@ -14,15 +14,18 @@ export type AgentHistoryContextType = {
   agentHistory: IMessage[];
   onChangeHistory: (msg: IMessage) => void;
   isLoading: boolean;
+  isMessageSending: boolean;
 };
 
 export const AgentHistoryContext = createContext<AgentHistoryContextType>({
   agentHistory: [],
   onChangeHistory: () => {},
   isLoading: false,
+  isMessageSending: false,
 });
+
 export const AgentHistoryContextProvider = ({ children }: PropsWithChildren) => {
-  const { data, isLoading, sendMessage } = useChat();
+  const { data, isLoading, sendMessage, isMessageSending } = useChat();
   const [history, setHistory] = useState<IMessage[]>([]);
 
   useEffect(() => {
@@ -44,7 +47,12 @@ export const AgentHistoryContextProvider = ({ children }: PropsWithChildren) => 
 
   return (
     <AgentHistoryContext.Provider
-      value={{ agentHistory: history, onChangeHistory: onChange, isLoading: isLoading }}
+      value={{
+        agentHistory: history,
+        onChangeHistory: onChange,
+        isLoading: isLoading,
+        isMessageSending: isMessageSending,
+      }}
     >
       {children}
     </AgentHistoryContext.Provider>

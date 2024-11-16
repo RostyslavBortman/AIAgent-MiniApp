@@ -9,14 +9,14 @@ const palette: PaletteOptions = {
     white: '#FFFFFF',
   },
   gray: {
-    100: '#E9E9E9', // contained button bg [HOOK_LEGO]
-    200: '#ECEDF0', // outlined button bg [HOOK_LEGO]
-    300: '#D4D6DB', // input border [HOOK_LEGO]
+    100: '#E9E9E9', // contained button bg
+    200: '#ECEDF0', // outlined button bg
+    300: '#D4D6DB', // input border
 
-    400: '#888888', // border checkbox | radio btn disabled
+    400: '#888888',
     600: '#5D5D5D', // input placeholder
 
-    900: '#202024', // button background [HOOK_LEGO]
+    900: '#202024', // button background
   },
 
   ...semantic,

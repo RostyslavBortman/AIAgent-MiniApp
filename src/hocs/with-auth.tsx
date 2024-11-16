@@ -30,7 +30,7 @@ export function withAuth(Component: ComponentType<IndexPageParams>) {
             priority
           />
           <Typography variant="h1" color="text.secondary" mt="auto">
-            UNIF AI
+            UNIFAI
           </Typography>
           <Typography variant="subtitle2" mt={0.5} mb={16} color="text.secondary">
             WEB3 AI Agent

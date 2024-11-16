@@ -23,7 +23,7 @@ export const DynamicWidgetWrapper = emotionStyled(Box)(({ theme }) => ({
     height: '56px',
     padding: '0',
     border: 'none !important',
-    backgroundColor: `${theme.palette.gray[900]} !important`,
+    backgroundColor: `${theme.palette.background.secondary} !important`,
 
     '&:hover': {
       backgroundColor: `${theme.palette.gray[600]} !important`,

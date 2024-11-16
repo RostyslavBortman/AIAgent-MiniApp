@@ -31,6 +31,9 @@ class AuthService {
   public async exchangeWorldCode(worldCode: string): Promise<AccessTokens> {
     const res = await axios.post(`${api}/exchange-world-code`, {
       code: worldCode,
+      clientId: config.worldAppId,
+      clientSecret: config.worldSecret,
+      redirectUrl: config.nextAuthRedirectUrl,
     });
 
     const tokens = res.data as ExchangeWorldCodeResponse;
@@ -61,23 +64,6 @@ class AuthService {
     } catch (e) {
       console.error(e);
       return false;
-    }
-  }
-
-  public async getWorldUserInfo(accessTokens: AccessTokens) {
-    try {
-      const res = await fetch('https://id.worldcoin.org/userinfo', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${accessTokens.worldAccessToken}`,
-        },
-      });
-
-      console.log(res);
-      return null;
-    } catch (e) {
-      console.error(e);
-      return null;
     }
   }
 }

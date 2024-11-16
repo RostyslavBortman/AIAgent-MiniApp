@@ -4,8 +4,6 @@ declare module '@mui/material/styles' {
   interface TypographyVariantsOptions {
     body3?: React.CSSProperties;
     caption2?: React.CSSProperties;
-    caption3?: React.CSSProperties;
-    headline?: React.CSSProperties;
   }
 
   interface BreakpointOverrides {
@@ -18,8 +16,6 @@ declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     body3: true;
     caption2: true;
-    caption3: true;
-    headline: true;
   }
 }
 

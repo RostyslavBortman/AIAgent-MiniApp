@@ -30,6 +30,7 @@ const useExchangeWorldCode = ({
       try {
         const accessTokens = await authService.exchangeWorldCode(code!);
         setAccessTokens(accessTokens);
+        router.push(AppRoutes.Home);
       } catch (e) {
         console.error(e);
         router.push(AppRoutes.Home);

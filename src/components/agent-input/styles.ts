@@ -16,7 +16,8 @@ export const AgentInputWrapper = styled(Box)(({ theme }) => ({
   padding: theme.spacing(3, 5),
   paddingRight: 0,
 
-  backgroundColor: theme.palette.gray[600],
+  border: `2px solid ${theme.palette.background.default}`,
+  backgroundColor: theme.palette.background.secondary,
   borderRadius: '12px',
 }));
 

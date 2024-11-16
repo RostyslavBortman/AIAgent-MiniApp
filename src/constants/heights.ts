@@ -1,2 +1,2 @@
-export const NAVBAR_HEIGHT = 70;
-export const AGENT_INPUT_HEIGHT = 66;
+export const NAVBAR_HEIGHT = 90;
+export const AGENT_INPUT_HEIGHT = 40;
