@@ -30,6 +30,14 @@ const useExchangeDynamicJwt = ({
     }
   });
 
+  useDynamicEvents('emailVerificationResult', async isAuthenticated => {
+    if (isAuthenticated) {
+      const authToken = getAuthToken();
+      authToken && exchangeDynamicJwt.mutateAsync(authToken);
+      router.push(AppRoutes.Home);
+    }
+  });
+
   const exchangeDynamicJwt = useMutation({
     mutationKey: ['exchangeDynamicJwt'],
     mutationFn: async (dynamicJwt: string) => {

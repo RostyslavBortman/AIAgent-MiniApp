@@ -31,9 +31,6 @@ class AuthService {
   public async exchangeWorldCode(worldCode: string): Promise<AccessTokens> {
     const res = await axios.post(`${api}/exchange-world-code`, {
       code: worldCode,
-      clientId: config.worldAppId,
-      clientSecret: config.worldSecret,
-      redirectUrl: config.nextAuthRedirectUrl,
     });
 
     const tokens = res.data as ExchangeWorldCodeResponse;
